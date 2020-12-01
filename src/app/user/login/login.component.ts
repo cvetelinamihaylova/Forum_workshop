@@ -1,5 +1,6 @@
 import { UserService } from './../user.service';
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -19,7 +20,8 @@ export class LoginComponent {
   }
 
   constructor(
-    private userService: UserService) { }
+    private userService: UserService,
+    private router: Router) { }
 
   get showEmailError(): boolean{
     return this.form.email.touched && this.form.email.value.length == 0;
@@ -35,5 +37,9 @@ export class LoginComponent {
     this.form[name].touched = true;
   }
   submitLoginHandler(): void{
-    this.userService.login();
-  
+    const {email: {value: email}, password: {value: password}} = this.form;
+    this.userService.login({email, password}).subscribe(()=>{
+      this.router.navigate(['/'])
+    })
+  } 
+}
