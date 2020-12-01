@@ -1,3 +1,4 @@
+import { AuthGuard } from './guards/auth.guard';
 import { FooterComponent } from './footer/footer.component';
 import { AsideComponent } from './aside/aside.component';
 import { HeaderComponent } from './header/header.component';
@@ -18,7 +19,8 @@ import { RouterModule } from '@angular/router';
     RouterModule
   ],
   providers: [
-    StorageService
+    StorageService,
+    AuthGuard
   ],
   exports: [
     HeaderComponent,

@@ -11,7 +11,7 @@ export class HeaderComponent {
   constructor(public userService: UserService) { }
 
   loginHandler() {
-    this.userService.login();
+   // this.userService.login();
     this.username = "sansa";
   }
 
