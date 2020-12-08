@@ -52,36 +52,29 @@
 
     <!-- homepage -->
     <div class="container">
-        <div class="new-theme-border">
-            <div class="header-background">
-                <span>New Theme</span>
-            </div>
-            <form>
-                <div class="new-theme-title">
-                    <label for="themeName">Title <span class="red">*</span></label>
-                    <input type="text" name="themeName" id="themeName">
-                    <p class="error">
-                        Theme name is required.
-                    </p>
-                    <p class="error">
-                        Theme name must be at least 5 characters long.
-                    </p>
+        <div class="profile">
+            <img src="./profile.png" alt="default user">
+            <h3>User Info:</h3>
+            <form action="">
+                <div class="flex">
+                    <p>Username: </p>
+                    <input type="text" name="username" id="username" value="Johny">
                 </div>
-                <div class="new-theme-content">
-                    <label for="postText">Post <span class="red">*</span></label>
-                    <textarea type="text" name="postText" id="postText" rows="8" class="height"></textarea>
-                    <p class="error">
-                        The field with your post is required.
-                    </p>
-                    <p class="error">
-                        Post must be at least 10 characters long.
-                    </p>
+                <div class="flex">
+                    <p>Email: </p>
+                    <input type="email" name="email" id="email" value="john.doe@gmail.com">
                 </div>
-                <div class="new-theme-buttons">
-                    <button class="cancel">Cancel</button>
-                    <button class="public">Post</button>
+                <div class="flex">
+                    <p>Phone: </p>
+                    <div>
+                        <select name="select-tel" id="select-tel" class="tel">
+                            <option value="00359">+359</option>
+                        </select>
+                        <input type="text" name="tel" id="tel" value="885 888 888">
+                    </div>
                 </div>
-
+                <button class="red-button">Cancel</button>
+                <button class="green-button">Save</button>
             </form>
         </div>
     </div>

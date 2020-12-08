@@ -1,32 +1,32 @@
 <div class="container">
-    <form class="login" action="" method="post">
+    <form #f="ngForm" class="login" (ngSubmit)="submitLoginHandler(f.value)">
 
         <fieldset>
             <h2>Login Form</h2>
 
             <p class="field field-icon">
                 <label for="email"><span><i class="fas fa-envelope"></i></span></label>
-                <input #userEmail (keyup)="updateInputValue('email', userEmail.value)" class="input-error" type="email" name="email" id="email" placeholder="john.doe@gmail.com">
+                <input #userEmail="ngModel" ngModel required pattern="[a-zA-Z-\.]{6,}@\w+\.(bg|com)" class="input-error" type="email" name="email" id="email" >
             </p>
-            <p *ngIf="showEmailError" class="error">
+            <p *ngIf="userEmail.touched && userEmail.errors?.required" class="error">
                 Email is required!
             </p>
-            <!-- <p class="error">
+            <p *ngIf="userEmail.touched && userEmail.errors?.email" class="error">
                 Email is not valid!
-            </p> -->
+            </p>
 
             <p class="field field-icon">
                 <label for="password"><span><i class="fas fa-lock"></i></span></label>
-                <input #userPassword (keyup)="updateInputValue('password', userPassword.value)" type="password" name="password" id="password" placeholder="******">
+                <input #userPassword="ngModel" ngModel required minlength="4" type="password" name="password" id="password" placeholder="******">
             </p>
-             <p class="error" *ngIf="showPasswordError">
+             <p class="error" *ngIf="userPassword.touched && userPassword.errors?.required">
                 Password is required!
             </p>
-            <!-- <p class="error">
+            <p *ngIf="userEmail.touched && userEmail.errors?.minlength" class="error">
                 Password must be at least 4 characters!
-            </p> -->
+            </p>
 
-            <button type="button" (click)="submitLoginHandler()" [disabled]="hasFormErrors">Login</button>
+            <button [disabled]="f.invalid">Login</button>
 
             <p class="text-center">
                 Have an account?
